@@ -5,13 +5,13 @@
   <style>
     /* Style the labels */
     label {
-      font-size: 24px;
+      font-size: 55px;
       margin-bottom: 10px;
     }
     
     /* Style the input box */
     input[type=text] {
-      font-size: 24px;
+      font-size: 55px;
       padding: 10px;
       border-radius: 5px;
       border: none;
@@ -20,7 +20,7 @@
     
     /* Style the button */
     button {
-      font-size: 24px;
+      font-size: 55px;
       padding: 10px 20px;
       background-color: #4CAF50;
       color: white;
@@ -38,12 +38,12 @@
     
     /* Style the product info */
     #product-name {
-      font-size: 24px;
+      font-size: 55px;
       margin: 10px 0;
     }
     
     #product-description {
-      font-size: 18px;
+      font-size: 55px;
       margin: 10px 0;
     }
     
@@ -55,7 +55,7 @@
   </style>
 </head>
 <body>
-  <h4>Barcode Scanner</h4>
+  <h4>Barcode Scanner PROGRAM</h4>
   <label for="barcode">Enter barcode HERE:</label>
   <input type="text" id="barcode" placeholder="Enter barcode" oninput="getProductInfo()">
   <hr>
@@ -65,5 +65,9 @@
   <img src="" id="product-image" alt="">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="app.js"></script>
+  <script>
+    // Set focus on barcode text field when the page loads
+    document.getElementById("barcode").focus();
+  </script>
 </body>
 </html>
