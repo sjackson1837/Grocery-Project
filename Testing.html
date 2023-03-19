@@ -1,18 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Barcode Scanner</title>
+  <title>Barcode Scanner</title>
+  <style>
+    /* Style the labels */
+    label {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    /* Style the input box */
+    input[type=text] {
+      font-size: 24px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 20px;
+    }
+    
+    /* Style the button */
+    button {
+      font-size: 24px;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    /* Style the hr */
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 20px 0;
+    }
+    
+    /* Style the product info */
+    #product-name {
+      font-size: 24px;
+      margin: 10px 0;
+    }
+    
+    #product-description {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+    
+    #product-image {
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-	<h4>Barcode Scanner</h4>
-	<input type="text" id="barcode" placeholder="Enter barcode">
-	<button onclick="getProductInfo()">Get Product Info</button>
-	<hr>
-	<h4>Product Info:</h4>
-	<p id="product-name"></p>
-	<p id="product-description"></p>
-	<img src="" id="product-image" alt="">
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="app.js"></script>
+  <h4>Barcode Scanner System</h4>
+  <label for="barcode">Enter barcode:</label>
+  <input type="text" id="barcode" placeholder="Enter barcode">
+  <button onclick="getProductInfo()">Get Product Info</button>
+  <hr>
+  <h4>Product Info:</h4>
+  <p id="product-name"></p>
+  <p id="product-description"></p>
+  <img src="" id="product-image" alt="">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
+
