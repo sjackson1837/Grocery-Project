@@ -55,10 +55,9 @@
   </style>
 </head>
 <body>
-  <h4>Barcode Scanner System</h4>
-  <label for="barcode">Enter barcode:</label>
-  <input type="text" id="barcode" placeholder="Enter barcode">
-  <button onclick="getProductInfo()">Get Product Info</button>
+  <h4>Barcode Scanner</h4>
+  <label for="barcode">Enter barcode HERE:</label>
+  <input type="text" id="barcode" placeholder="Enter barcode" oninput="getProductInfo()">
   <hr>
   <h4>Product Info:</h4>
   <p id="product-name"></p>
@@ -68,4 +67,3 @@
   <script src="app.js"></script>
 </body>
 </html>
-
