@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Save to Google Sheets</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#myForm').on('submit', function(e) {
+				e.preventDefault();
+				var data = $('#myInput').val();
+				var apiKey = 'YOUR_API_KEY';
+				var spreadsheetId = 'YOUR_SPREADSHEET_ID';
+				var sheetName = 'Sheet1'; // Replace with your sheet name
+				var url = 'https://sheets.googleapis.com/v4/spreadsheets/' + spreadsheetId + '/values/' + sheetName + '!A1:A1:append?valueInputOption=USER_ENTERED';
+
+				$.ajax({
+					url: url,
+					headers: {
+						'Authorization': 'Bearer ' + apiKey
+					},
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						'range': sheetName + '!A1:A1',
+						'values': [[data]]
+					},
+					success: function(response) {
+						alert('Data saved to Google Sheets!');
+					},
+					error: function(response) {
+						alert('Error saving data to Google Sheets.');
+					}
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<form id="myForm">
+		<label for="myInput">Enter data:</label>
+		<input type="text" id="myInput" name="myInput">
+		<input type="submit" value="Save to Google Sheets">
+	</form>
+</body>
+</html>
