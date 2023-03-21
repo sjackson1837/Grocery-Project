@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Inventory Management</title>
     <style>
       /* Header styles */
@@ -13,8 +14,8 @@
         padding: 10px;
       }
       #logo {
-        width: 50px;
-        height: 50px;
+        width: 75px;
+        height: 75px;
         margin-right: 10px;
       }
       #search-bar {
@@ -39,16 +40,54 @@
         margin-left: 10px;
       }
 
-      /* Button styles */
+      .background-image {
+        background-image: url("images/pantry.JPG");
+        background-size: cover;
+        opacity: 0.2;
+        position: relative;
+        height: 750px;
+      }
+      .menu_buttons {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: block;
+        margin-bottom: 10px;
+      }
+
       button {
-        background-color: #333;
+        width: 350px;
+        background-color: black;
         color: white;
         border: none;
-        border-radius: 5px;
         padding: 10px;
-        margin: 10px;
-        cursor: pointer;
+        font-size: 16px;
       }
+
+      .top-btn {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .center-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .bottom-btn {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+
+
 
       /* Body styles */
       body {
@@ -58,8 +97,10 @@
       }
 
       .heading-text {
-        font-size: 35px;
+        font-size: 40px;
+        text-align: top ;
       }
+
     </style>
   </head>
   <body>
@@ -73,9 +114,16 @@
         <button id="search-btn"><i class="fa fa-search"></i></button>
       </div>
     </header>
-    <button>Check Inventory</button>
-    <button>Add Inventory</button>
-    <button>Remove Inventory</button>
+    <div class="background-image"></div>
+    <div class="menu-options">  
+      <button id="addInv" class="top-btn">Add Item To Inventory</button>
+          <script src="https://apis.google.com/js/api.js"></script>
+          <script src="script.js"></script>
+      <button class="center-btn">Use Item from Inventory</button>
+      <div><button onclick="window.location.href = 'srjtest.html';">Test button</button></div>
+      <button class="bottom-btn">Check Inventory Levels</button>  
+    </div>
+    
   </body>
 </html>
 
