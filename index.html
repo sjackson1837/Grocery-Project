@@ -1,6 +1,112 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <title>Inventory Management</title>
+    <style>
+      /* Header styles */
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+      }
+      #logo {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+      }
+      #search-bar {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border-radius: 20px;
+        padding: 5px;
+      }
+      #search-box {
+        border: none;
+        padding: 5px;
+        width: 200px;
+      }
+      #search-btn {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+      }
+
+      /* Button styles */
+      button {
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      /* Body styles */
+      body {
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+      }
+
+      .heading-text {
+        font-size: 35px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <img src="images/grocery_bag_cartoon.jfif" alt="Logo" id="logo" />
+        <span class="heading-text">Jackson Family Grocery App</span>
+      </div>
+      <div id="search-bar">
+        <input type="text" placeholder="Search..." id="search-box" />
+        <button id="search-btn"><i class="fa fa-search"></i></button>
+      </div>
+    </header>
+    <button>Check Inventory</button>
+    <button>Add Inventory</button>
+    <button>Remove Inventory</button>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
     <title>Jackson's Grocery App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/buttons.css">
@@ -8,19 +114,42 @@
     <link rel="stylesheet" href="styles/header.css">
   </head>
   
-  
-  <body>
+
+   -->
+
+
+  <!-- <body>
     <div class="grid-container">
-      <div class="grid-item left-column">
-        <img class="grocery-image" src="images/grocery_bag_cartoon.jfif">
+      <div class="left-column">
+        <img class="grocery-image"
+          src="images/grocery_bag_cartoon.jfif" alt="Your Image" width="85" height="85">
       </div>
-      <div class="grid-item right-column">
-        <div class="grid-item top-right-row">
-          Jackson Family's Grocery Appss
+      <div class="right-column">
+        <div class="heading-text">Jackson Family Grocery App</div>
+        <div class="heading-search">
+          <input class="search-bar" type="text" placeholder="Search">
+          <button class="search-button">
+            <img class="search-icon" src="images/search.svg">
+          <div class="tooltip">Search</div>
+        </button>
         </div>
-        <div class="grid-item bottom-right-row">Bottom Right Row</div>
       </div>
     </div>
+     -->
+
+
+<!--     
+    <div class="grid-container">
+      <div class="grid-item-left-column">
+        <img class="grocery-image" src="images/grocery_bag_cartoon.jfif">
+      </div>
+      <div class="grid-item-right-column">
+        <div class="grid-item-top-right-row">
+          Jackson Family's Grocery App
+        </div>
+        <div class="grid-item-bottom-right-row">Bottom Right Row</div>
+      </div>
+    </div> -->
 
 
     <!--
