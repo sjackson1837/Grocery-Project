@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Inventory</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h4>Add Inventory - Quick Scan</h4>
+  <label for="barcode">Enter barcode HERE:</label>
+  <input type="text" id="barcode" placeholder="Enter barcode" oninput="getProductInfo()">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="addinv.js"></script>
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
+    const form = document.forms['submit-to-google-sheet']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+  <script>
+    // Set focus on barcode text field when the page loads
+    document.getElementById("barcode").focus();
+  </script>
+</body>
+</html>
