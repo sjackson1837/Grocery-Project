@@ -8,11 +8,29 @@
         <div class="banner"> 
             <div class="navbar">
                 <img src="images/grocery_bag_cartoon.jfif" class="logo">
-                <ul>
-                    <li><a href="#">Add Inventory</a></li>
-                    <li><a href="#">Use Inventory</a></li>
-                    <li><a href="#">Check Inventory</a></li>
-                </ul>
+                <div class="middle-section">
+                    <input class="search-bar" 
+                            type="text" 
+                            placeholder="Search" 
+                            id="search"
+                            oninput="handleBarcodeInput()">
+                    <button class="search-button">
+                      <img class="search-icon" src="images/search.svg">
+                      <div class="tooltip">Search</div>
+                      <script>
+                        window.onload = function() {
+                          document.getElementById("search").focus();
+                        };
+                      </script>
+                        <script>
+                            function handleBarcodeInput() {
+                              const barcode = document.getElementById("search").value;
+                              // Run your code using the scanned barcode value
+                              console.log("Scanned barcode:", barcode);
+                            }
+                        </script>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -27,7 +45,5 @@
             <button type="button"><span></span>CHECK INVENTORY</button><br>
         </div>
     </div>
-
-
     </body>
 </html>
