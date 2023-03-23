@@ -17,12 +17,12 @@ function lookupProduct() {
         document.getElementById("ProductQty").value = ProductQty;
         //document.getElementById("product-image").src = imageUrl;
         document.getElementById("barcode").value = "";
-        var audio = new Audio('../Sounds/positive.mp3');
+        var audio = new Audio('Sounds/positive.mp3');
 		    audio.play();
         sendtogoogle();
       })
       .catch(error => console.error(error));
-      var audio = new Audio('../Sounds/negative.mp3');
+      var audio = new Audio('Sounds/negative.mp3');
       audio.play();
     
   }
