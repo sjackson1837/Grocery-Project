@@ -22,6 +22,9 @@ function lookupProduct() {
         sendtogoogle();
       })
       .catch(error => console.error(error));
+      var audio = new Audio('../Sounds/negative.mp3');
+      audio.play();
+    
   }
 
   function sendtogoogle() {
