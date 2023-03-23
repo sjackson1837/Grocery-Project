@@ -1,33 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>form data in sheets</title>
-    </head> 
-    <body>
-        <form name="submit-to-google-sheet">
-            <label>Name:</label><br>
-            <input type="text" name="name"><br><br>
-            <label>Email:</label><br>
-            <input type="text" name="email"><br><br>
-            <label>Gender:</label><br>
-            <input type="radio" name="gender" value="Male"><label>Male</label>
-            <input type="radio" name="gender" value="Female"><label>Female</label><br><br>
-            <label>Message</label><br>
-            <textarea name="message" cols="20"></textarea><br><br>
-            <input type="submit" name="submit">
-        </form>
-        <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
-            const form = document.forms['submit-to-google-sheet']
-          
-            form.addEventListener('submit', e => {
-              e.preventDefault()
-              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
+  <head>
+    <meta charset="UTF-8">
+    <title>Product Information Lookup</title>
+    <script>
+        function lookupProduct() {
+          const barcode = document.getElementById("barcode").value;
+          const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
+  
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              const ProductName = data.product.product_name;
+              const productDescription = data.product.generic_name;
+              const imageUrl = data.product.image_url;
+  
+              document.getElementById("ProductBarcode").value = barcode;
+              document.getElementById("ProductName").value = ProductName;
+              document.getElementById("productDescription").value = productDescription;
+              document.getElementById("product-image").src = imageUrl;
+              document.getElementById("barcode").value = "";
+              sendtogoogle();
             })
-          </script>
-    </body>
+            .catch(error => console.error(error));
+        }
+
+        function sendtogoogle() {
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('update', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+        }
+      </script>
+  </head>
+  <body>
+    <form name="submit-to-google-sheet">
+        <h1>Product Information Lookup</h1>
+        <h1><label for="barcode">Barcode:</label><br></h1>
+        <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
+        <br><br>
+        <h1>
+            <label for="ProductBarcode">Product Barcode:</label><br>
+            <input type="text" id="ProductBarcode" name="ProductBarcode" readonly>
+            <br><br>
+            <label for="ProductName">Product Name:</label><br>
+            <input type="text" id="ProductName" name="ProductName" readonly>
+            <br><br>
+            <label for="productDescription">Product Description:</label><br>
+            <input type="text" id="productDescription" name="productDescription" readonly><br>
+            <br>
+            <img src="" id="product-image" alt="">
+        </h1>
+    </form>
+  </body>
 </html>
