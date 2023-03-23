@@ -6,17 +6,19 @@
   </head>
   <body>
     <h1>Product Information Lookup</h1>
-    <label for="barcode">Barcode:</label>
+    <h1><label for="barcode">Barcode:</label><br></h1>
     <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
-    <button onclick="lookupProduct()">Lookup Product</button>
+    <!-- <button onclick="lookupProduct()">Lookup Product</button> -->
+    <br><br><br>
+    <h1>
+        <label for="productName">Product Name:</label><br>
+        <input type="text" id="productName" name="productName" readonly>
+        <br><br><br>
+        <label for="productDescription">Product Description:</label><br>
+        <input type="text" id="productDescription" name="productDescription" readonly>
+    </h1>
+        <!-- <img src="" id="product-image" alt=""> -->
     <br>
-    <label for="productName">Product Name:</label>
-    <input type="text" id="productName" name="productName" readonly>
-    <br>
-    <label for="productDescription">Product Description:</label>
-    <input type="text" id="productDescription" name="productDescription" readonly>
-    <br>
-    <div id="productInfo"></div>
 
     <script>
       function lookupProduct() {
@@ -31,13 +33,8 @@
 
             document.getElementById("productName").value = productName;
             document.getElementById("productDescription").value = productDescription;
-
-            const productInfoDiv = document.getElementById("productInfo");
-            productInfoDiv.innerHTML = `
-              <h2>Product Information</h2>
-              <p><strong>Name:</strong> ${productName}</p>
-              <p><strong>Description:</strong> ${productDescription}</p>
-            `;
+            //document.getElementById("product-image").value = product.image_url;
+            ;
           })
           .catch(error => console.error(error));
       }
