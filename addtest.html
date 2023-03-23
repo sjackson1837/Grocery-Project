@@ -1,33 +1,46 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>form data in sheets</title>
-    </head> 
-    <body>
-        <form name="submit-to-google-sheet">
-            <label>Name:</label><br>
-            <input type="text" name="name"><br><br>
-            <label>Email:</label><br>
-            <input type="text" name="email"><br><br>
-            <label>Gender:</label><br>
-            <input type="radio" name="gender" value="Male"><label>Male</label>
-            <input type="radio" name="gender" value="Female"><label>Female</label><br><br>
-            <label>Message</label><br>
-            <textarea name="message" cols="20"></textarea><br><br>
-            <input type="submit" name="submit">
-        </form>
-        <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
-            const form = document.forms['submit-to-google-sheet']
-          
-            form.addEventListener('submit', e => {
-              e.preventDefault()
-              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-            })
-          </script>
-    </body>
+  <head>
+    <meta charset="UTF-8">
+    <title>Product Information Lookup</title>
+  </head>
+  <body>
+    <h1>Product Information Lookup</h1>
+    <label for="barcode">Barcode:</label>
+    <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
+    <button onclick="lookupProduct()">Lookup Product</button>
+    <br>
+    <label for="productName">Product Name:</label>
+    <input type="text" id="productName" name="productName" readonly>
+    <br>
+    <label for="productDescription">Product Description:</label>
+    <input type="text" id="productDescription" name="productDescription" readonly>
+    <br>
+    <div id="productInfo"></div>
+
+    <script>
+      function lookupProduct() {
+        const barcode = document.getElementById("barcode").value;
+        const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
+
+        fetch(url)
+          .then(response => response.json())
+          .then(data => {
+            const productName = data.product.product_name;
+            const productDescription = data.product.generic_name;
+
+            document.getElementById("productName").value = productName;
+            document.getElementById("productDescription").value = productDescription;
+
+            const productInfoDiv = document.getElementById("productInfo");
+            productInfoDiv.innerHTML = `
+              <h2>Product Information</h2>
+              <p><strong>Name:</strong> ${productName}</p>
+              <p><strong>Description:</strong> ${productDescription}</p>
+            `;
+          })
+          .catch(error => console.error(error));
+      }
+    </script>
+  </body>
 </html>
