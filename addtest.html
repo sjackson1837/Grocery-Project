@@ -8,16 +8,19 @@
     <h1>Product Information Lookup</h1>
     <h1><label for="barcode">Barcode:</label><br></h1>
     <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
-    <!-- <button onclick="lookupProduct()">Lookup Product</button> -->
     <br><br><br>
     <h1>
+        <label for="productBarcode">Product Barcode:</label><br>
+        <input type="text" id="productBarcode" name="productBarcode" readonly>
+        <br><br><br>
         <label for="productName">Product Name:</label><br>
         <input type="text" id="productName" name="productName" readonly>
         <br><br><br>
         <label for="productDescription">Product Description:</label><br>
-        <input type="text" id="productDescription" name="productDescription" readonly>
+        <input type="text" id="productDescription" name="productDescription" readonly><br><br>
+        <br><br>
+        <img src="" id="product-image" alt="">
     </h1>
-        <!-- <img src="" id="product-image" alt=""> -->
     <br>
 
     <script>
@@ -30,10 +33,14 @@
           .then(data => {
             const productName = data.product.product_name;
             const productDescription = data.product.generic_name;
+            const imageUrl = data.product.image_url;
 
+            document.getElementById("productBarcode").value = barcode;
             document.getElementById("productName").value = productName;
             document.getElementById("productDescription").value = productDescription;
-            //document.getElementById("product-image").value = product.image_url;
+            document.getElementById("product-image").src = imageUrl;
+            barcode.value="";
+            barcode.focus();
             ;
           })
           .catch(error => console.error(error));
