@@ -19,23 +19,25 @@
               document.getElementById("productName").value = productName;
               document.getElementById("productDescription").value = productDescription;
               document.getElementById("product-image").src = imageUrl;
-              clearbarcode();
+              document.getElementById("barcode").value = ""
+           //   clearbarcode();
               ;
             })
             .catch(error => console.error(error));
-            clearbarcode();
+           // document.getElementById("barcode").value = ""
+          //  clearbarcode();
         }
 
-        function clearbarcode() {
-            const barcodeInput = document.getElementById("barcode");
-            barcodeInput.addEventListener("change", () => {
-                // Clear the input box
-                barcodeInput.value = "";
+        // function clearbarcode() {
+        //     const barcodeInput = document.getElementById("barcode");
+        //     barcodeInput.addEventListener("change", () => {
+        //         // Clear the input box
+        //         barcodeInput.value = "";
   
-                // Set the focus back to the input box
-                barcodeInput.focus();
-            });
-        }
+        //         // Set the focus back to the input box
+        //         barcodeInput.focus();
+        //     });
+        // }
       </script>
   </head>
   <body>
