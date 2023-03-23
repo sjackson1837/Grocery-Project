@@ -3,48 +3,58 @@
   <head>
     <meta charset="UTF-8">
     <title>Product Information Lookup</title>
+    <script>
+        function lookupProduct() {
+          const barcode = document.getElementById("barcode").value;
+          const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
+  
+          fetch(url)
+            .then(response => response.json())
+            .then(data => {
+              const productName = data.product.product_name;
+              const productDescription = data.product.generic_name;
+              const imageUrl = data.product.image_url;
+  
+              document.getElementById("productBarcode").value = barcode;
+              document.getElementById("productName").value = productName;
+              document.getElementById("productDescription").value = productDescription;
+              document.getElementById("product-image").src = imageUrl;
+              clearbarcode();
+              ;
+            })
+            .catch(error => console.error(error));
+            clearbarcode();
+        }
+
+        function clearbarcode() {
+            const barcodeInput = document.getElementById("barcode");
+            barcodeInput.addEventListener("change", () => {
+                // Clear the input box
+                barcodeInput.value = "";
+  
+                // Set the focus back to the input box
+                barcodeInput.focus();
+            });
+        }
+      </script>
   </head>
   <body>
-    <h1>Product Information Lookup</h1>
-    <h1><label for="barcode">Barcode:</label><br></h1>
-    <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
-    <br><br><br>
-    <h1>
-        <label for="productBarcode">Product Barcode:</label><br>
-        <input type="text" id="productBarcode" name="productBarcode" readonly>
-        <br><br><br>
-        <label for="productName">Product Name:</label><br>
-        <input type="text" id="productName" name="productName" readonly>
-        <br><br><br>
-        <label for="productDescription">Product Description:</label><br>
-        <input type="text" id="productDescription" name="productDescription" readonly><br><br>
+        <h1>Product Information Lookup</h1>
+        <h1><label for="barcode">Barcode:</label><br></h1>
+        <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
         <br><br>
-        <img src="" id="product-image" alt="">
-    </h1>
-    <br>
-
-    <script>
-      function lookupProduct() {
-        const barcode = document.getElementById("barcode").value;
-        const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
-
-        fetch(url)
-          .then(response => response.json())
-          .then(data => {
-            const productName = data.product.product_name;
-            const productDescription = data.product.generic_name;
-            const imageUrl = data.product.image_url;
-
-            document.getElementById("productBarcode").value = barcode;
-            document.getElementById("productName").value = productName;
-            document.getElementById("productDescription").value = productDescription;
-            document.getElementById("product-image").src = imageUrl;
-            barcode.value="";
-            barcode.focus();
-            ;
-          })
-          .catch(error => console.error(error));
-      }
-    </script>
+        <h1>
+            <label for="productBarcode">Product Barcode:</label><br>
+            <input type="text" id="productBarcode" name="productBarcode" readonly>
+            <br><br>
+            <label for="productName">Product Name:</label><br>
+            <input type="text" id="productName" name="productName" readonly>
+            <br><br>
+            <label for="productDescription">Product Description:</label><br>
+            <input type="text" id="productDescription" name="productDescription" readonly><br>
+            <br>
+            <img src="" id="product-image" alt="">
+        </h1>
+    
   </body>
 </html>
