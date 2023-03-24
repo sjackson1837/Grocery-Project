@@ -8,6 +8,8 @@
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100%;
 		}
 
 		#header {
@@ -15,16 +17,18 @@
 			align-items: center;
 			justify-content: center;
 			height: 100px;
-			background-color: #4CAF50;
+			background-color: rgba(0, 0, 0, 0.849);
 			color: #fff;
-			font-size: 2rem;
+			font-size: 45px;
 			font-weight: bold;
+            
 		}
 
 		#header img {
 			width: 75px;
 			height: 75px;
 			margin-right: 1rem;
+            border-radius: 35px;
 		}
 
 		#content {
@@ -32,12 +36,16 @@
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			height: calc(100% - 100px);
+			height: calc(100% - 100px); 
 			background-color: #f5f5f5;
 			text-align: center;
 			font-size: 2rem;
 			line-height: 3rem;
 			color: #333;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), 
+                        rgba(0, 0, 0, 0.75)), url(../images/pantry.JPG);
+            background-size: cover;
+            background-position: center;
 		}
 
 		.button {
@@ -55,8 +63,8 @@
 </head>
 <body>
 	<div id="header">
-		<img src="https://via.placeholder.com/75x75" alt="Header Image">
-		This is a Header
+		<img src="images/grocery_bag_cartoon.jfif" alt="Header Image">
+		Jackson Family Grocery App
 	</div>
 	<div id="content">
 		<button class="button">Add Inventory</button>
