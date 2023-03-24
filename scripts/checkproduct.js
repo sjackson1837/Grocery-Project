@@ -1,6 +1,10 @@
 function checkProduct() {
+
     const barcode = document.getElementById("barcode").value;
     const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
+    document.getElementById("ProductName").value = "";
+    document.getElementById("product-image").src = "";
+  
 
     fetch(url)
       .then(response => response.json())
