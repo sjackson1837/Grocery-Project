@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-      /* Style the buttons */
-      .button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 24px;
-        margin: 10px;
-        cursor: pointer;
-        border-radius: 10px;
-      }
-      
-      /* Change the background color of the buttons when hovered */
-      .button:hover {
-        background-color: #3e8e41;
-      }
-      
-      /* Style the container */
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <button class="button">Add Inventory</button>
-      <button class="button">Use Inventory</button>
-      <a href="checkInv.html"><button class="button">Check Inventory button</button></a>
-      <a href="Testing.html"> <button class="button">Test Barcodes</button></a>
-      <a href="test_barcode.html"> <button class="button">Test Barcodes</button></a>
+    <head>
+        <title>How to make a website - Easy tutorial</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <div class="banner"> 
+            <div class="navbar">
+                <img src="images/grocery_bag_cartoon.jfif" class="logo">
+                <div class="middle-section">
+                    <input class="search-bar" 
+                            type="text" 
+                            placeholder="Search" 
+                            id="search"
+                            oninput="handleBarcodeInput()">
+                    <button class="search-button">
+                      <img class="search-icon" src="images/search.svg">
+                      <div class="tooltip">Search</div>
+                      <script>
+                        window.onload = function() {
+                          document.getElementById("search").focus();
+                        };
+                      </script>
+                        <script>
+                            function handleBarcodeInput() {
+                              const barcode = document.getElementById("search").value;
+                              // Run your code using the scanned barcode value
+                              console.log("Scanned barcode:", barcode);
+                            }
+                        </script>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+    <div class="content">
+        <h1>Jackson Family<br>Grocery App...details21</h1>
+        <p>Please use this app to add/remove/check inventory</p>
+        <div>
+            <button type="button" onclick="window.location.href='addtest.html';"><span></span>ADD INVENTORY<br>quick scan</button><br>
+            <button type="button" onclick="window.location.href='adddetails.html';"><span></span>ADD INVENTORY<br>with details</button><br>
+            <button type="button" onclick="window.location.href='iphone.html';"><span></span>USE INVENTORY</button><br>
+            <button type="button" onclick="window.location.href='Testing.html';"><span></span>CHECK INVENTORY</button><br>
+        </div>
     </div>
-  </body>
+    </body>
 </html>

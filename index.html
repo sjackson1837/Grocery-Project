@@ -1,49 +1,21 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>How to make a website - Easy tutorial</title>
-        <link rel="stylesheet" href="styles/style.css">
-    </head>
-    <body>
-        <div class="banner"> 
-            <div class="navbar">
-                <img src="images/grocery_bag_cartoon.jfif" class="logo">
-                <div class="middle-section">
-                    <input class="search-bar" 
-                            type="text" 
-                            placeholder="Search" 
-                            id="search"
-                            oninput="handleBarcodeInput()">
-                    <button class="search-button">
-                      <img class="search-icon" src="images/search.svg">
-                      <div class="tooltip">Search</div>
-                      <script>
-                        window.onload = function() {
-                          document.getElementById("search").focus();
-                        };
-                      </script>
-                        <script>
-                            function handleBarcodeInput() {
-                              const barcode = document.getElementById("search").value;
-                              // Run your code using the scanned barcode value
-                              console.log("Scanned barcode:", barcode);
-                            }
-                        </script>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        
-    <div class="content">
-        <h1>Jackson Family<br>Grocery App...details21</h1>
-        <p>Please use this app to add/remove/check inventory</p>
-        <div>
-            <button type="button" onclick="window.location.href='addtest.html';"><span></span>ADD INVENTORY<br>quick scan</button><br>
-            <button type="button" onclick="window.location.href='adddetails.html';"><span></span>ADD INVENTORY<br>with details</button><br>
-            <button type="button" onclick="window.location.href='iphone.html';"><span></span>USE INVENTORY</button><br>
-            <button type="button" onclick="window.location.href='Testing.html';"><span></span>CHECK INVENTORY</button><br>
-        </div>
-    </div>
-    </body>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Grocery App</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+	<div id="header">
+		<img src="images/grocery_bag_cartoon.jfif" alt="Header Image">
+		Jackson Family<br> Grocery App
+	</div>
+	<div id="content">
+		<button class="button" type="button" onclick="window.location.href='addtest.html';">
+            <span></span>Add Inventory</button>
+		<button class="button"><span></span>Use Inventory</button>
+		<button class="button"><span></span>Check Inventory</button>
+		<button class="button"><span></span>Test</button>
+	</div>
+</body>
 </html>
