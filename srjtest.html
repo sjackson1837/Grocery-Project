@@ -1,33 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>form data in sheets</title>
-    </head> 
     <body>
-        <form name="submit-to-google-sheet">
-            <label>Name:</label><br>
-            <input type="text" name="name"><br><br>
-            <label>Email:</label><br>
-            <input type="text" name="email"><br><br>
-            <label>Gender:</label><br>
-            <input type="radio" name="gender" value="Male"><label>Male</label>
-            <input type="radio" name="gender" value="Female"><label>Female</label><br><br>
-            <label>Message</label><br>
-            <textarea name="message" cols="20"></textarea><br><br>
-            <input type="submit" name="submit">
-        </form>
+        <h2>testing</h2>
+
+        <button onclick="myFunction()">Show PopUp</button>
+
         <script>
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
-            const form = document.forms['submit-to-google-sheet']
-          
-            form.addEventListener('submit', e => {
-              e.preventDefault()
-              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => console.log('Success!', response))
-                .catch(error => console.error('Error!', error.message))
-            })
-          </script>
+            function myFunction() {
+                alert("Wow!");
+            }
+        </script>
     </body>
 </html>
