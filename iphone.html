@@ -10,12 +10,29 @@
 			overflow: hidden;
 		}
 
+		#header {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100px;
+			background-color: #4CAF50;
+			color: #fff;
+			font-size: 2rem;
+			font-weight: bold;
+		}
+
+		#header img {
+			width: 75px;
+			height: 75px;
+			margin-right: 1rem;
+		}
+
 		#content {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: calc(100% - 100px);
 			background-color: #f5f5f5;
 			text-align: center;
 			font-size: 2rem;
@@ -37,6 +54,10 @@
 	</style>
 </head>
 <body>
+	<div id="header">
+		<img src="https://via.placeholder.com/75x75" alt="Header Image">
+		This is a Header
+	</div>
 	<div id="content">
 		<button class="button">Add Inventory</button>
 		<button class="button">Use Inventory</button>
