@@ -1,80 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Inventory Summary</title>
-  <script src="https://apis.google.com/js/api.js"></script>
-  <script>
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E',
-        Authorization: 'ya29.a0Ael9sCNQiwSeT5-z5a3rhueDpsJzJQke4wBIPkdu4c5K0kicy4UZDDtENNt1H41OJEYEhjCrBVocBem3fPaMdTfU7VKibSDwaAuhkLkFcSlZFQxmwOA17RYUptNjtYwbmcJ8KwnxMDF92MWclUrzqaKYCnVvaCgYKAfoSARMSFQF4udJh4pNyye76rA_Je1OU9CMKfQ0163',
-        range: 'A:C'
-      }).then(response => {
-        alert("I'm here and it worked");
-      }).catch(err => {
-        alert("I'm here and it didn't worked");
-      });
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Grocery App</title>
+    <script>
+      const start = () => {
+  // Initialize the JavaScript client library
+  gapi.client.init({
+    'apiKey': 'AIzaSyD6D3XL1zWBVP6Hk-rYU9KnUVICsQ37rnc',
+    'discoveryDocs': ["https://sheets.googleapis.com/$discovery/rest?version=v4"],
+  }).then(() => {
+    return gapi.client.sheets.spreadsheets.values.get({
+      spreadsheetId: '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E',
+      range: 'data!a1:c5', // for example: List 1!A1:B6
+    })
+  }).then((response) => {
+    // Parse the response data
+    const loadedData = response.result.values;
 
+    // populate HTML table with data
+    const table = document.getElementsByTagName('table')[0];
+    
+    // add column headers
+    const columnHeaders = document.createElement('tr');
+    columnHeaders.innerHTML = `<th>${loadedData[0][0]}</th>
+<th>${loadedData[0][1]}</th>`;
+    table.appendChild(columnHeaders);
 
-//     alert("I'm here");
-//     alert("I'm here 2");
-//      // Load the Google Sheets API client library
-//      gapi.load('client', function() {
-//    // Authenticate the client with the Google Sheets API using OAuth 2.0
-//    // ...
-//     alert("I'm here 3");
-//    // Retrieve the data from the "Jackson Inventory" sheet
-//      gapi.client.sheets.spreadsheets.values.get({
-//      spreadsheetId: '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E',
-//      range: 'A:C'
-//    }).then(function(response) {
-//      // Process the data to get the unique barcodes and calculate the quantity for each item
-//      alert("I'm here 4");
-//      var data = response.result.values;
-//      var items = {};
-         
-//     alert("Wow! this is amazing");
-//      data.forEach(function(row) {
-//        var barcode = row[0];
-//        var name = row[1];
-//        var qty = Number(row[2]);
-//        if (items[barcode]) {
-//          items[barcode].qty += qty;
-//        } else {
-//          items[barcode] = {
-//            name: name,
-//            qty: qty
-//          };
-//        }
-//      });
+    // add table data rows
+    for (let i = 1; i < loadedData.length; i++) {
+      const tableRow = document.createElement('tr');
+      tableRow.innerHTML = `<td>${loadedData[i][0]}</td>
+<td>${loadedData[i][1]}</td>`;
+      table.appendChild(tableRow);
+    }
+  }).catch((err) => {
+  	console.log(err.error.message);
+  });
+};
 
-//      // Display the data on the screen
-//      alert("I'm here 5");
-//      var table = document.createElement('table');
-//      var header = table.createTHead();
-//      var row = header.insertRow(0);
-//      row.insertCell(0).innerHTML = 'Barcode';
-//      row.insertCell(1).innerHTML = 'Product Name';
-//      row.insertCell(2).innerHTML = 'Qty';
-//      var body = table.createTBody();
-//      Object.keys(items).forEach(function(barcode) {
-//        row = body.insertRow();
-//        row.insertCell(0).innerHTML = barcode;
-//        row.insertCell(1).innerHTML = items[barcode].name;
-//        row.insertCell(2).innerHTML = items[barcode].qty;
-//      });
-//      document.body.appendChild(table);
-//    }, function(reason) {
-//     alert("I'm here errrroooorrr");
-//      console.error('Error: ' + reason.result.error.message);
-//    });
-//  });
-
-  </script>
+// Load the JavaScript client library
+gapi.load('client', start);
+    </script>
 </head>
 <body>
-  <button onclick="myFunction()">Show PopUp</button>
-  <h1>Inventory Summary11</h1>
-  <div id="table-container"></div>
+  <div id="tbl">
+    <table>
+      <caption>Sales volume</caption>
+    </table>
+  </div>
 </body>
 </html>
