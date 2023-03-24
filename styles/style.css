@@ -7,6 +7,7 @@ body {
         background-color: aqua;
 }
 
+
 #header {
   display: flex;
   align-items: center;
@@ -26,9 +27,10 @@ body {
         border-radius: 35px;
 }
 
+
 #content {
-        padding-top: 50px;
-        padding-bottom: 100%; 
+  padding-top: 50px;
+  padding-bottom: 100%; 
   display: flex; 
   flex-direction: column;
   align-items: center;
@@ -45,6 +47,7 @@ body {
         background-position: center;
 }
 
+
 .button {
   display: inline-block;
         width: 275px;
@@ -60,7 +63,8 @@ body {
   cursor: pointer;
         transform: translateY(-50%);
 }
-    span {
+
+span {
         background: #009688;
         height: 100%;
         width: 0;

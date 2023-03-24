@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Add Inventory</title>
-  <link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Add Inv</title>
+    <link rel="stylesheet" href="styles/addinvstyle.css">
+    <script type="text/javascript" src="scripts/scripts.js"></script>
 </head>
 <body>
-  <h4>Add Inventory - Quick Scan</h4>
-  <label for="barcode">Enter barcode HERE:</label>
-  <input type="text" id="barcode" placeholder="Enter barcode" oninput="getProductInfo()">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="addinv.js"></script>
-  <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
-    const form = document.forms['submit-to-google-sheet']
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
-  <script>
-    // Set focus on barcode text field when the page loads
-    document.getElementById("barcode").focus();
-  </script>
+	<div id="header">
+		<img src="images/grocery_bag_cartoon.jfif" alt="Header Image">
+		Add Inventory
+	</div>
+
+    <div id="content">
+	<form name="submit-to-google-sheet">
+            <div >
+            <label for="barcode">Barcode:</label><br>
+            <input type="text" id="barcode" name="barcode" oninput="lookupProduct()"><br><br>
+            <label class="addinvlabel" for="ProductBarcode">Product Barcode:</label><br>
+            <input type="text" id="ProductBarcode" name="ProductBarcode" readonly>
+            <br><br>
+            <label class="addinvlabel" for="ProductName">Product Name:</label><br>
+            <input type="text" id="ProductName" name="ProductName" readonly>
+            <br><br>
+            <!-- <label for="ProductDescription">Product Description:</label><br>
+            <input type="text" id="ProductDescription" name="ProductDescription" readonly><br>
+            <br> -->
+            <input type="text" id="ProductQty" name="ProductQty" readonly><br>
+            <img src="" id="product-image" alt="">
+        </div>
+    </div>
+    </form>
 </body>
 </html>
