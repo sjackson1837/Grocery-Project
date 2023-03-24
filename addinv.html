@@ -16,17 +16,17 @@
 	<form name="submit-to-google-sheet">
             <div >
             <label for="barcode">Barcode:</label><br>
-            <input type="text" id="barcode" name="barcode" oninput="lookupProduct()"><br><br>
-            <label class="addinvlabel" for="ProductBarcode">Product Barcode:</label><br>
-            <input type="text" id="ProductBarcode" name="ProductBarcode" readonly>
-            <br><br>
-            <label class="addinvlabel" for="ProductName">Product Name:</label><br>
-            <input type="text" id="ProductName" name="ProductName" readonly>
-            <br><br>
+            <input type="text" id="barcode" name="barcode" oninput="lookupProduct()"><br>
+            <!-- <label class="addinvlabel" for="ProductBarcode">Product Barcode:</label><br> -->
+            <input type="hidden" id="ProductBarcode" name="ProductBarcode" readonly>
+            <br>
+            <label for="ProductName">Product Name:</label><br>
+            <input class="addinvprodname" type="text" id="ProductName" name="ProductName" readonly>
+            <br>
             <!-- <label for="ProductDescription">Product Description:</label><br>
             <input type="text" id="ProductDescription" name="ProductDescription" readonly><br>
             <br> -->
-            <input type="text" id="ProductQty" name="ProductQty" readonly><br>
+            <input type="hidden" id="ProductQty" name="ProductQty" readonly><br>
             <img src="" id="product-image" alt="">
         </div>
     </div>
