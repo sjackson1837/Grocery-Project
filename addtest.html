@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>Product Information Lookup</title>
     <link rel="stylesheet" href="styles/style.css">
     <script type="text/javascript" src="scripts/scripts.js"></script>
   </head>
-  <body scroll="no" style="overflow:hidden">
-    <form class="formfont" name="submit-to-google-sheet">
+  <body >
+    <form name="submit-to-google-sheet">
         <h1>Product Information Lookup</h1>
         <h1><label for="barcode">Barcode:</label><br></h1>
         <input type="text" id="barcode" name="barcode" oninput="lookupProduct()">
