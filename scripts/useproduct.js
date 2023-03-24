@@ -1,4 +1,4 @@
-function lookupProduct() {
+function useProduct() {
     const barcode = document.getElementById("barcode").value;
     const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
 
@@ -8,7 +8,7 @@ function lookupProduct() {
         const ProductName = data.product.product_name;
         //const ProductDescription = data.product.generic_name;
         //const ProductQty = "new";
-        var ProductQty = 1;
+        var ProductQty = -1;
         const imageUrl = data.product.image_url;
 
         document.getElementById("ProductBarcode").value = barcode;
@@ -27,14 +27,13 @@ function lookupProduct() {
     
   }
 
-
   function sendtogoogle() {
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
-  const form = document.forms['submit-to-google-sheet']
-        var audio = new Audio('Sounds/positive.mp3');
-		    audio.play();
-
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      .then(response => console.log('Success!', response))
-      .catch(error => console.error('Error!', error.message))
-  }
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
+    const form = document.forms['submit-to-google-sheet']
+          var audio = new Audio('Sounds/positive.mp3');
+              audio.play();
+  
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+    }

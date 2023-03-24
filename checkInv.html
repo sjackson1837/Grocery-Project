@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Barcode Scanner Demo</title>
-  </head>
-  <body>
-    <h1>Barcode Scanner Demo</h1>
-    <label for="barcodeInput">Scan Barcode:</label>
-    <input type="text" id="barcodeInput" autofocus>
-    <p>Scanned Barcode: <span id="scannedBarcode"></span></p>
-    <script>
-      const barcodeInput = document.getElementById("barcodeInput");
-      const scannedBarcode = document.getElementById("scannedBarcode");
-      
-      barcodeInput.addEventListener("change", () => {
-        scannedBarcode.textContent = barcodeInput.value;
-      });
-    </script>
-  </body>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<title>Check Inv</title>
+    <link rel="stylesheet" href="styles/addinvstyle.css">
+    <script type="text/javascript" src="scripts/checkproduct.js"></script>
+</head>
+<body>
+	<div id="header">
+		<img src="images/grocery_bag_cartoon.jfif" alt="Header Image">
+		Check Inventory
+	</div>
+
+    <div id="content">
+	<form name="submit-to-google-sheet">
+            <div >
+            <label for="barcode">Barcode:</label><br>
+            <input type="text" id="barcode" name="barcode" oninput="checkProduct()"><br>
+            <!-- <label class="addinvlabel" for="ProductBarcode">Product Barcode:</label><br> -->
+            <input type="hidden" id="ProductBarcode" name="ProductBarcode" readonly>
+            <br>
+            <label for="ProductName">Product Name:</label><br>
+            <textarea class="addinvprodname" type="text" id="ProductName" name="ProductName" readonly>
+                </textarea>
+            <br>
+            <input type="hidden" id="ProductQty" name="ProductQty" readonly><br>
+            <img src="" id="product-image" alt="">
+        </div>
+    </div>
+    </form>
+</body>
 </html>
