@@ -5,12 +5,13 @@
   <title>Inventory Summary</title>
   <script src="https://apis.google.com/js/api.js"></script>
   <script>
-    
+    alert("I'm here");
+    alert("I'm here 2");
      // Load the Google Sheets API client library
      gapi.load('client', function() {
    // Authenticate the client with the Google Sheets API using OAuth 2.0
    // ...
-
+    alert("I'm here 3");
    // Retrieve the data from the "Jackson Inventory" sheet
      gapi.client.sheets.spreadsheets.values.get({
      spreadsheetId: '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E',
@@ -59,7 +60,7 @@
 </head>
 <body>
   <button onclick="myFunction()">Show PopUp</button>
-  <h1>Inventory Summarytt</h1>
+  <h1>Inventory Summaryrr</h1>
   <div id="table-container"></div>
 </body>
 </html>
