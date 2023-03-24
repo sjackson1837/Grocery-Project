@@ -7,6 +7,7 @@
   <script>
       gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E',
+        Authorization: 'ya29.a0Ael9sCNQiwSeT5-z5a3rhueDpsJzJQke4wBIPkdu4c5K0kicy4UZDDtENNt1H41OJEYEhjCrBVocBem3fPaMdTfU7VKibSDwaAuhkLkFcSlZFQxmwOA17RYUptNjtYwbmcJ8KwnxMDF92MWclUrzqaKYCnVvaCgYKAfoSARMSFQF4udJh4pNyye76rA_Je1OU9CMKfQ0163',
         range: 'A:C'
       }).then(response => {
         alert("I'm here and it worked");
@@ -73,7 +74,7 @@
 </head>
 <body>
   <button onclick="myFunction()">Show PopUp</button>
-  <h1>Inventory Summaryww</h1>
+  <h1>Inventory Summary11</h1>
   <div id="table-container"></div>
 </body>
 </html>
