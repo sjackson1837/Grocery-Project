@@ -18,6 +18,7 @@
      range: 'A:C'
    }).then(function(response) {
      // Process the data to get the unique barcodes and calculate the quantity for each item
+     alert("I'm here 4");
      var data = response.result.values;
      var items = {};
          
@@ -37,6 +38,7 @@
      });
 
      // Display the data on the screen
+     alert("I'm here 5");
      var table = document.createElement('table');
      var header = table.createTHead();
      var row = header.insertRow(0);
@@ -52,6 +54,7 @@
      });
      document.body.appendChild(table);
    }, function(reason) {
+    alert("I'm here errrroooorrr");
      console.error('Error: ' + reason.result.error.message);
    });
  });
@@ -60,7 +63,7 @@
 </head>
 <body>
   <button onclick="myFunction()">Show PopUp</button>
-  <h1>Inventory Summaryrr</h1>
+  <h1>Inventory Summaryee</h1>
   <div id="table-container"></div>
 </body>
 </html>
