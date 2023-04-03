@@ -17,8 +17,11 @@ function checkProduct() {
         document.getElementById("product-image").src = imageUrl;
         document.getElementById("barcode").value = "";
 
+        console.log('ProductName:', ProductName);
+        console.log('ProductName truthy and not empty:', ProductName && ProductName.trim() !== '');
+
         //Check if product is found
-        if (ProductName){
+        if (ProductName && ProductName.trim() !== ''){
           var audio = new Audio('Sounds/positive.mp3');
 		      audio.play();
           console.log("Here");
