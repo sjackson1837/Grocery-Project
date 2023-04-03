@@ -14,12 +14,20 @@ function checkProduct() {
 
         document.getElementById("ProductBarcode").value = barcode;
         document.getElementById("ProductName").value = ProductName;
-        //document.getElementById("ProductDescription").value = ProductDescription;
         document.getElementById("product-image").src = imageUrl;
         document.getElementById("barcode").value = "";
-        var audio = new Audio('Sounds/positive.mp3');
-		    audio.play();
+
+        //Check if product is found
+        if (ProductName){
+          var audio = new Audio('Sounds/positive.mp3');
+		      audio.play();
+          console.log("Here");
+        } else {
+          console.log("Not Here");
+          document.getElementById("ProductName").value = "not found";
+          var audio = new Audio('Sounds/negative.mp3');
+		      audio.play();
+        }
       })
       .catch(error => console.error(error));
-    
   }
