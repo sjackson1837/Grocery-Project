@@ -8,15 +8,17 @@ fetch(FULL_URL)
 .then(res=>res.text())
 .then(rep=> {
   let data = JSON.parse(rep.substr(47).slice(0, -2));
-  console.log(data);
+ // console.log(data)
 
  let barcode = document.getElementById('barcode');
- //let product = document.getElementById('product');
+ let product = document.getElementById('product');
+ let srjbarcode = document.getElementById('srjbarcode');
+ let srjproduct = document.getElementById('srjproduct');
  let length = data.table.rows.length -1;
 
  console.log(data.table.rows[0].c[0].v);
  barcode.innerHTML = data.table.rows[0].c[0].v;
- //product.innerHTML = data.table.rows[0].c[1].v;
+ product.innerHTML = data.table.rows[0].c[1].v;
 
  for(let i = 0; i < length; i++) {
    
@@ -26,11 +28,11 @@ fetch(FULL_URL)
     barcode.append(NewBoxBarcode);
     NewBoxBarcode.innerHTML = data.table.rows[i].c[0].v;
 
-  //  let NewBoxProduct = document.createElement('div');
-  //  NewBoxProduct.id = ("box"+i);
-  //  NewBoxProduct.className = "Some_Style";
-  //  barcode.append(NewBoxProduct);
-  //  NewBoxProduct.innerHTML = data.table.rows[i].c[1].v;
+    let NewBoxProduct = document.createElement('div');
+    NewBoxProduct.id = ("box"+i);
+    NewBoxProduct.className = "Some_Style";
+    barcode.append(NewBoxProduct);
+    NewBoxProduct.innerHTML = data.table.rows[i].c[1].v;
 
     
     

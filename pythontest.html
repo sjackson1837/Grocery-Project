@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+    <title>Python Test</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <script type="text/javascript">
+      async function install_numpy() {
+        await pyodide.loadPackage("numpy");
+      }
+
+      async function main() {
+        await loadPyodide({ indexURL : "https://cdn.jsdelivr.net/pyodide/v0.18.1/full/" });
+        await install_numpy();
+        // Your code using NumPy goes here
+      }
+
+      main();
+    </script>
+    <py-env>
+      - numpy
+      - matplotlib
+    </py-env>
+  </head>
+    <body>
+
+<py-script>
+
+a = 0
+b = 1
+for _ in range(100):
+  print(a)
+  a, b = b, a + b
+</py-script>
+<py-script>
+import numpy as np
+import matplotlib.pyplot as plt
+x,y = np.random(100), np.random.random(100)
+plt.scatter(x,y)
+plt.gfc()
+</py-script>
+
+
+    </body></html>
+
