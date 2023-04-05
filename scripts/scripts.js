@@ -27,7 +27,8 @@ function lookupProduct() {
       alert("Product not found");
       var audio = new Audio('Sounds/negative.mp3');
       audio.play();
-    });
+    })};
+
   
   //   fetch(url)
   //     .then(response => response.json())
