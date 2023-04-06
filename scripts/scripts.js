@@ -6,7 +6,7 @@ function lookupProduct() {
     .then(response => response.json())
     .then(data => {
       const ProductName = data.product.product_name;
-      const ProductQty = 1;
+      const ProductQty = 3;
       const imageUrl = data.product.image_url;
 
       document.getElementById("ProductBarcode").value = barcode;
