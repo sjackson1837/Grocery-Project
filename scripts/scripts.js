@@ -6,7 +6,7 @@ function lookupProduct() {
     .then(response => response.json())
     .then(data => {
       const ProductName = data.product.product_name;
-      const ProductQty = 2;
+      const ProductQty = 5;
       const imageUrl = data.product.image_url;
 
       document.getElementById("ProductBarcode").value = barcode;
@@ -24,24 +24,6 @@ function lookupProduct() {
       document.getElementById("product-image").src = "";
       document.getElementById("barcode").value = "";
       document.getElementById("product-description").style.display = "block";
-      alert("No product found");
-
-      // Allow the user to enter product information
-      const productDescriptionForm = document.getElementById("product-description-form");
-      productDescriptionForm.style.display = "block";
-      productDescriptionForm.addEventListener("submit", event => {
-        event.preventDefault();
-        const ProductName = document.getElementById("product-name").value;
-        const ProductQty = document.getElementById("product-quantity").value;
-        const imageUrl = document.getElementById("product-image-url").value;
-
-        document.getElementById("ProductName").value = ProductName;
-        document.getElementById("ProductQty").value = ProductQty;
-        document.getElementById("product-image").src = imageUrl;
-
-        // Save the product information to Google Sheets
-        sendToGoogle();
-      });
     });
 }
 
