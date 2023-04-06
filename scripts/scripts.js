@@ -6,7 +6,7 @@ function lookupProduct() {
     .then(response => response.json())
     .then(data => {
       const ProductName = data.product.product_name;
-      const ProductQty = 22;
+      const ProductQty = 55;
       const imageUrl = data.product.image_url;
 
       document.getElementById("ProductBarcode").value = barcode;
@@ -18,12 +18,13 @@ function lookupProduct() {
     })
     .catch(error => {
       console.error(error);
-      alert("No product found.");
-      document.getElementById("ProductName").readOnly = false;
+      document.getElementById("ProductBarcode").value = barcode;
       document.getElementById("ProductName").value = "";
       document.getElementById("ProductQty").value = "";
       document.getElementById("product-image").src = "";
       document.getElementById("barcode").value = "";
+      document.getElementById("product-description").style.display = "block";
+      alert("No product found");
     });
 }
 
