@@ -27,12 +27,13 @@ function lookupProduct() {
     });
 }
 
-function submitToGoogle() {
+function sendToGoogle() {
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec'
   const form = document.forms['submit-to-google-sheet'];
   var audio = new Audio('Sounds/positive.mp3');
   audio.play();
 
-  fetch(form.action, { method: 'POST', body: new FormData(form)})
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
     .then(response => console.log('Success!', response))
     .catch(error => console.error('Error!', error.message));
 }
