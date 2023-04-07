@@ -3,18 +3,13 @@ function addProduct() {
   const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
 
   let barcodeIndex;
-  console.log("first bc index  " + barcodeIndex);
 
   fetch(url)
     .then(response => response.json())
     .then(data => {
        // Check if product data is available
        if (!data.product) {
-        var audio = new Audio('Sounds/negative.mp3');
-        audio.onended = function() {
-          alert("Product not Found");
-        };
-        audio.play();
+        alert("Product not found");
         return;
       }
 
@@ -32,6 +27,7 @@ function addProduct() {
           document.getElementById("ProductQty").value = ProductQty;
           document.getElementById("product-image").src = imageUrl;
           document.getElementById("barcode").value = "";
+          console.log("Am i sending this to Google?" + barcode + " | " + ProductName + " | " + product);
           sendToGoogle(barcode, ProductName, ProductQty);
         })
         .catch(error => console.error(error));
@@ -40,7 +36,7 @@ function addProduct() {
 }
 
 function findBarcodeinSheet(barcode){
-  console.log("here is the barcode"  + barcode);
+  //console.log("here is the barcode"  + barcode);
   let SHEET_ID = '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E'
   let SHEET_TITLE = 'data';
   let SHEET_RANGE = 'A:C'
@@ -55,7 +51,7 @@ function findBarcodeinSheet(barcode){
       console.log("Barcode third: " + barcode)
       if (data.table && data.table.rows) { // check if data.table and data.table.rows are defined
         let length = data.table.rows.length;
-        console.log("length " + length);
+        //console.log("length " + length);
 
         barcodeIndex = data.table.rows.findIndex(row => row.c[0].v === barcode);
         console.log("barcodeIndex  " + barcodeIndex);
@@ -73,71 +69,57 @@ function findBarcodeinSheet(barcode){
     .catch(error => console.error(error));
 }
 
-async function sendToGoogle() {
+async function sendToGoogle(barcode, ProductName, ProductQty) {
   const scriptURL = 'https://script.google.com/macros/s/AKfycbzAew4P3qGozmSxEP22oLoEtyn_dJ-h2aiQpGy4rUzY7X5Tm-F_b5_pgfQQzZIxwF0_/exec';
   const form = document.forms['submit-to-google-sheet'];
-
-  var audio = new Audio('Sounds/positive.mp3');
-  audio.play();
-
-  const barcode = document.getElementById("ProductBarcode").value;
-  const qty = parseInt(document.getElementById("ProductQty").value);
-  console.log("barc and qty   " + barcode + " " + qty)
+  console.log("SENT TO GOOGLE!!!!!" + barcode);
 
   try {
-    const response = await fetch(scriptURL, { method: 'POST', body: new FormData(form) });
-    console.log('Success!', response);
+    // Check if barcode exists in sheet
+    const { newQty, barcodeIndex } = await findBarcodeinSheet(barcode);
+    console.log("google sent.... " + newQty + ".....index..." + barcodeIndex)
 
-    const json = await response.json();
-    let sheetData = JSON.parse(json.substring(47).slice(0, -2));
-    console.log("here I ammmmm");
-
-    // find the index of the row with the barcode
-    console.log("bc index...   " + sheetData)
-    const barcodeIndex = sheetData.findIndex(row => row[0] === barcode);
-    console.log("bc index333...   " + barcodeIndex)
-
+    // If barcode exists, update corresponding row
     if (barcodeIndex !== -1) {
-      // if the row exists, update the quantity
-      sheetData[barcodeIndex][2] = qty;
-    } else {
-      // if the row does not exist, add a new row
-      sheetData.push([barcode, document.getElementById("ProductName").value, qty]);
-    }
+      console.log("xxI'm HereXxx " + newQty + "and barcode" + barcode);
+      const updateForm = new FormData();
+      updateForm.append('barcode', barcode);
+      updateForm.append('ProductName', ProductName);
+      updateForm.append('ProductQty', newQty);
 
-    // update the sheet with the new data
-    await updateGoogleSheet(sheetData);
-    return qty;
+      // Add a new parameter to indicate that we want to update an existing row
+      updateForm.append('action', 'update');
+      updateForm.append('rowIndex', barcodeIndex);
+
+      return fetch(scriptURL, { method: 'POST', body: updateForm })
+        .then(response => {
+          console.log('Success!', response);
+
+          return response.json()
+            .then(data => {
+              return parseInt(data.newQty);
+            })
+        })
+        .catch(error => console.error('Error!', error.message))
+    }
+    // If barcode does not exist, add new row
+    else {
+      console.log("barcode does not exist!!!!!!")
+      const addForm = new FormData(form);
+      addForm.append('ProductQty', 1);
+
+      return fetch(scriptURL, { method: 'POST', body: addForm })
+        .then(response => {
+          console.log('Success!', response);
+
+          return response.json()
+            .then(data => {
+              return parseInt(data.newQty);
+            })
+        })
+        .catch(error => console.error('Error!', error.message))
+    }
   } catch (error) {
     console.error('Error!', error.message);
   }
 }
-
-async function updateGoogleSheet(data) {
-  const SHEET_ID = '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E';
-  const SHEET_NAME = 'data';
-  const RANGE = 'A1:C' + data.length;
-  const URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}!${RANGE}?valueInputOption=USER_ENTERED`;
-
-  const requestBody = {
-    values: data
-  };
-
-  const options = {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${ACCESS_TOKEN}`
-    },
-    body: JSON.stringify(requestBody)
-  };
-
-  try {
-    const response = await fetch(URL, options);
-    console.log('Sheet updated!', response);
-  } catch (error) {
-    console.error('Error updating sheet!', error.message);
-  }
-}
-
-
