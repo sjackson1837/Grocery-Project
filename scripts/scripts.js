@@ -3,11 +3,19 @@ function lookupProduct() {
   const url = `https://world.openfoodfacts.org/api/v0/product/${barcode}.json`;
 
   // Check if barcode exists in Google Sheet and increase quantity by 1 if it does
-  const sheetId = '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z0';
-  const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A:C?key=YOUR_API_KEY`;
+  //const sheetId = '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z0';
+  //const sheetUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/Sheet1!A:C?key=YOUR_API_KEY`;
+  const sheetId = '1ls6zFkH8epBpvfHcycXia4_M0irRBmj9z00r7LOMW6E'
+  const SHEET_TITLE = 'data';
+  const SHEET_RANGE = 'A:C'
+
+  let sheetUrl = ('https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?sheet=' + SHEET_TITLE + '&range=' + SHEET_RANGE);  
+
   fetch(sheetUrl)
     .then(response => response.json())
     .then(data => {
+      console.log("I'm Here111")
+
       const barcodeIndex = data.values.findIndex(row => row[0] === barcode);
       if (barcodeIndex !== -1) {
         const newQty = parseInt(data.values[barcodeIndex][2]) + 1;
@@ -28,6 +36,7 @@ function lookupProduct() {
           .catch(error => console.error(error));
       } else {
         // Barcode does not exist in sheet, fetch product data and save to sheet
+        console.log("I'm Here222")
         fetch(url)
           .then(response => response.json())
           .then(data => {
@@ -43,6 +52,7 @@ function lookupProduct() {
             sendToGoogle();
           })
           .catch(error => {
+            console.log("I'm Here333")
             console.error(error);
             alert("No product found");
             document.getElementById("ProductBarcode").value = barcode;
@@ -55,4 +65,5 @@ function lookupProduct() {
       }
     })
     .catch(error => console.error(error));
+    console.log("I'm Here444")
 }
