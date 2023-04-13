@@ -5,6 +5,12 @@
     "version": "0.2.0",
     "configurations": [
     {
+        "name": "Xdebug Cloud",
+        "type": "php",
+        "request": "launch",
+        "xdebugCloudToken": ""
+    },
+    {
         "name": "Launch Chrome",
         "request": "launch",
         "type": "chrome",

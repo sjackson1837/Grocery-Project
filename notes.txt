@@ -11,6 +11,32 @@ https://www.youtube.com/watch?v=vtq2xTWK7h4&ab_channel=LearnProgramming
 
 A good (working) link to google sheets - Link-to-GoogleSheets.html and qty.js.....keep these files
 
+A good html file that pulls data from google sheets and formats it pretty good is 
+addinvtest2.html (the script is in the code)
+
+
+google.script.run *this is used to run code on my Google Sheets
+
+
+//MYSQL stuff:
+//Good way to connect to database - https://www.geeksforgeeks.org/how-to-connect-to-mysql-server-using-vs-code-and-fix-errors/
+//username:  groceryuser
+//password:  groceryapp
+//Review JSON Syntax
+{
+  "mysqlOptions": {
+    "authProtocol": "default"
+  },
+  "previewLimit": 50,
+  "server": "srjdb.c9g2xoa52vhw.us-east-1.rds.amazonaws.com",
+  "port": 3306,
+  "driver": "MySQL",
+  "name": "JacksonGrocery",
+  "username": "admin",
+  "database": "jacksongrocerydb",
+  "askForPassword": true
+}
+
 
 
 

@@ -57,7 +57,8 @@ function findBarcodeinSheet(barcode){
         let length = data.table.rows.length;
         console.log("length " + length);
 
-        barcodeIndex = data.table.rows.findIndex(row => row.c[0].v === barcode);
+        //barcodeIndex = data.table.rows.findIndex(row => row.c[0].v === barcode);
+        barcodeIndex = data.table.rows.findIndex(row => row.c && row.c[0] && row.c[0].v === barcode);
         console.log("barcodeIndex  " + barcodeIndex);
         if (barcodeIndex !== -1) { // check if barcode is found in the array
           console.log("data again " + data.table.rows[barcodeIndex].c[2].v);

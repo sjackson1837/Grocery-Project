@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Product to Jackson Grocery</title>
+</head>
+<body>
+	<h1>Add Product to Jackson Grocery</h1>
+	<form action="scripts/add_product.php" method="post">
+		<label for="barcode">Barcode:</label>
+		<input type="text" id="ProductBarcode" name="barcode" required><br><br>
+		<label for="productname">Product Name:</label>
+		<input type="text" id="ProductName" name="productname" required><br><br>
+		<label for="productcategory">Product Category:</label>
+		<input type="text" id="ProductCategory" name="productcategory" required><br><br>
+		<label for="min">Minimum Quantity:</label>
+		<input type="number" id="MinQty" name="min" required><br><br>
+		<label for="productqty">Product Quantity:</label>
+		<input type="number" id="ProductQty" name="productqty" required><br><br>
+		<input type="submit" value="Add Product">
+	</form>
+</body>
+</html>

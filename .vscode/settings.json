@@ -1,3 +1,18 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "srjdb.c9g2xoa52vhw.us-east-1.rds.amazonaws.com",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "JacksonGrocery",
+            "username": "admin",
+            "database": "jacksongrocerydb",
+            "askForPassword": true
+        }
+    ]
 }
